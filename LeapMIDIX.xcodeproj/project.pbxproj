@@ -12,6 +12,8 @@
 		6044028B16D1392D00B5C7DF /* Python.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6044028A16D1392D00B5C7DF /* Python.framework */; };
 		6044029016D13C7B00B5C7DF /* demo.py in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6044028F16D13BF500B5C7DF /* demo.py */; };
 		6044029316D13CFE00B5C7DF /* __init__.py in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6044029216D13CF400B5C7DF /* __init__.py */; };
+		6044029616D141F600B5C7DF /* PythonListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6044029416D141F500B5C7DF /* PythonListener.cpp */; };
+		6044029716D141F600B5C7DF /* PythonListener.h in Headers */ = {isa = PBXBuildFile; fileRef = 6044029516D141F600B5C7DF /* PythonListener.h */; };
 		C31B003C1675A5A100383230 /* libLeap.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C31B003B1675A5A100383230 /* libLeap.dylib */; };
 		C3249770167D3B120093F7B8 /* leapmidi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C3249767167D3A100093F7B8 /* leapmidi.a */; };
 		C3249773167D3B730093F7B8 /* libLeap.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = C31B003B1675A5A100383230 /* libLeap.dylib */; };
@@ -106,6 +108,8 @@
 		6044028A16D1392D00B5C7DF /* Python.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Python.framework; path = System/Library/Frameworks/Python.framework; sourceTree = SDKROOT; };
 		6044028F16D13BF500B5C7DF /* demo.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; name = demo.py; path = LeapMIDIX/python/demo.py; sourceTree = "<group>"; };
 		6044029216D13CF400B5C7DF /* __init__.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; name = __init__.py; path = LeapMIDIX/python/__init__.py; sourceTree = "<group>"; };
+		6044029416D141F500B5C7DF /* PythonListener.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PythonListener.cpp; sourceTree = "<group>"; };
+		6044029516D141F600B5C7DF /* PythonListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PythonListener.h; sourceTree = "<group>"; };
 		C31B003B1675A5A100383230 /* libLeap.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libLeap.dylib; path = ../../../../Leap_SDK/lib/libLeap.dylib; sourceTree = "<group>"; };
 		C324975D167D3A100093F7B8 /* leapmidi.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = leapmidi.xcodeproj; path = ../leapmidi/leapmidi.xcodeproj; sourceTree = "<group>"; };
 		C33FEF5D166AAECD006BFE81 /* controls.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = controls.cpp; sourceTree = "<group>"; };
@@ -805,6 +809,8 @@
 				C3F81442166A08780039AB7E /* Device.h */,
 				C3F81490166AC56E0039AB7E /* LMXListener.cpp */,
 				C3F81491166AC56E0039AB7E /* LMXListener.h */,
+				6044029416D141F500B5C7DF /* PythonListener.cpp */,
+				6044029516D141F600B5C7DF /* PythonListener.h */,
 				C3F81438166A08170039AB7E /* main.cpp */,
 				C35C783C166AAD2F00557211 /* Visualizer.cpp */,
 				C35C783D166AAD2F00557211 /* Visualizer.h */,
@@ -836,6 +842,7 @@
 				C3F81493166AC56E0039AB7E /* LMXListener.h in Headers */,
 				C361AA7716C3A6CC00771054 /* FingerControlProgram.h in Headers */,
 				6014F90F16D0800B007B14EF /* FingerNoteProgram.h in Headers */,
+				6044029716D141F600B5C7DF /* PythonListener.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -927,6 +934,7 @@
 				C3F81439166A08170039AB7E /* main.cpp in Sources */,
 				C3F81443166A08780039AB7E /* Device.cpp in Sources */,
 				C3F81492166AC56E0039AB7E /* LMXListener.cpp in Sources */,
+				6044029616D141F600B5C7DF /* PythonListener.cpp in Sources */,
 				C361AA7616C3A6CC00771054 /* FingerControlProgram.cpp in Sources */,
 				6014F90E16D0800B007B14EF /* FingerNoteProgram.cpp in Sources */,
 			);

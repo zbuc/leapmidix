@@ -38,7 +38,8 @@ public:
     virtual void init();
     
     virtual void addControlMessage(leapmidi::midi_control_index controlIndex, leapmidi::midi_control_value controlValue);
-    virtual void addNoteMessage(leapmidi::midi_note_index noteIndex, leapmidi::midi_note_value noteValue);
+    virtual void addNoteOnMessage(leapmidi::midi_note_index noteIndex, leapmidi::midi_note_value noteValue);
+    virtual void addNoteOffMessage(leapmidi::midi_note_index noteIndex, leapmidi::midi_note_value noteValue);
     
 protected:
     virtual void initPacketList();
@@ -54,7 +55,8 @@ protected:
     // add MIDI control messages to the MIDI packet queue to transmit
     virtual void queueMessages(std::queue<midi_message> &messages);
     virtual void queueControlPacket(leapmidi::midi_control_index control, leapmidi::midi_control_value value);
-    virtual void queueNotePacket(leapmidi::midi_note_index note, leapmidi::midi_note_value value);
+    virtual void queueNoteOnPacket(leapmidi::midi_note_index note, leapmidi::midi_note_value value);
+    virtual void queueNoteOffPacket(leapmidi::midi_note_index note, leapmidi::midi_note_value value);
     
     // send midi packets
     virtual OSStatus sendMIDIQueue();

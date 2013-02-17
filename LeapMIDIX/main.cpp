@@ -9,40 +9,45 @@
 #include <iostream>
 #include <unistd.h>
 #include <time.h>
-#include "LMXListener.h"
+#include "PythonListener.h"
 #include <Python/Python.h>
 
 void sendNote();
 
-static int numargs=0;
-
-/* Return the number of arguments of the application command line */
+/* Takes a dictionary describing a LeapMIDI program and executes it */
 static PyObject*
-leapmidi_numargs(PyObject *self, PyObject *args)
+leapmidi_run_program(PyObject *self, PyObject *args)
 {
-    if(!PyArg_ParseTuple(args, ":numargs"))
-        return NULL;
-    return Py_BuildValue("i", numargs);
+    // in: 1 dictionary
+    printf("Running program...\n");
 }
 
 static PyMethodDef leapmidiMethods[] = {
-    {"numargs", leapmidi_numargs, METH_VARARGS,
-        "Return the number of arguments received by the process."},
+    {"run_program", leapmidi_run_program, METH_VARARGS,
+        "Takes a dictionary describing a LeapMIDI program and executes it"},
     {NULL, NULL, 0, NULL}
 };
 
 int main(int argc, char * argv[]) {
+    // start listening for events
+    leapmidi::PythonListener listener;
+    Leap::Controller controller;
+    
+    listener.init(&controller);
+    controller.addListener(listener);
+    
+    // load python program and execute
+    // entry function
     PyObject *pName, *pModule, *pFunc;
     PyObject *pValue;
     
     string pythonProgram = "programs.demo";
-    string pythonEntryFxn = "foo";
+    string pythonEntryFxn = "setup";
     
     printf("Setting program name to %s\n", argv[0]);
     Py_SetProgramName(argv[0]);
     Py_Initialize();
     
-    numargs = argc;
     Py_InitModule("leapmidi", leapmidiMethods);
     
     PySys_SetArgv(argc, argv);
@@ -57,14 +62,13 @@ int main(int argc, char * argv[]) {
         if (pFunc && PyCallable_Check(pFunc)) {
             pValue = PyObject_CallObject(pFunc, NULL);
             if (pValue != NULL) {
-                printf("Result of call: %ld\n", PyInt_AsLong(pValue));
                 Py_DECREF(pValue);
             }
             else {
                 Py_DECREF(pFunc);
                 Py_DECREF(pModule);
                 PyErr_Print();
-                fprintf(stderr,"Call failed\n");
+                fprintf(stderr,"Call to Python program entry function %s failed\n", pythonEntryFxn.c_str());
                 return 1;
             }
         }
@@ -78,16 +82,9 @@ int main(int argc, char * argv[]) {
     }
     else {
         PyErr_Print();
-        fprintf(stderr, "Failed to load \"%s\"\n", pythonProgram.c_str());
+        fprintf(stderr, "Failed to load Python program \"%s\"\n", pythonProgram.c_str());
         return 1;
     }
-    
-    // start listening for events
-    leapmidi::LMXListener listener;
-    Leap::Controller controller;
-    
-    listener.init(&controller);
-    controller.addListener(listener);
     
     // run forever
     try {

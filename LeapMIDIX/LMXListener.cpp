@@ -65,7 +65,7 @@ void LMXListener::onControlUpdated(const Leap::Controller &controller, GesturePt
     // control value
     leapmidi::midi_control_value val = control->mappedValue();
     
-    if (1) {
+    if (0) {
         cout << "recognized control index " << controlIndex
         << " (" << control->description() << ")"
         << ", raw value: "
@@ -75,27 +75,32 @@ void LMXListener::onControlUpdated(const Leap::Controller &controller, GesturePt
     device->addControlMessage(controlIndex, val);
 }
     
-    void LMXListener::onNoteUpdated(const Leap::Controller &controller, GesturePtr gesture, NotePtr note) {
-        // call superclass method
-        leapmidi::Listener::onNoteUpdated(controller, gesture, note);
-        
-        // draw gesture and note output
-        // ...
-        
-        // note
-        leapmidi::midi_note_index noteIndex = note->noteIndex();
-        // control value
-        leapmidi::midi_note_value val = note->mappedValue();
-        
-        if (1) {
-            cout << "recognized note index " << noteIndex
-            << " (" << note->description() << ")"
-            << ", raw value: "
-            << note->rawValue() << " mapped value: " << val << endl;
-        }
-        
-        device->addNoteMessage(noteIndex, val);
+void LMXListener::onNoteUpdated(const Leap::Controller &controller, GesturePtr gesture, NotePtr note) {
+    // call superclass method
+    leapmidi::Listener::onNoteUpdated(controller, gesture, note);
+    
+    // draw gesture and note output
+    // ...
+    
+    // note
+    leapmidi::midi_note_index noteIndex = note->noteIndexOff();
+    // control value
+    leapmidi::midi_note_value val = note->mappedValue();
+    
+    if (note->note_state == NOTE_ON) {
+        noteIndex = note->noteIndexOn();
+        device->addNoteOnMessage(noteIndex, val);
+    } else {
+        device->addNoteOffMessage(noteIndex, val);
     }
+    
+    if (0) {
+        cout << "recognized note index " << noteIndex
+        << " (" << note->description() << ")"
+        << ", raw value: "
+        << note->rawValue() << " mapped value: " << val << endl;
+    }
+}
 
 
 void LMXListener::drawLoop() {
