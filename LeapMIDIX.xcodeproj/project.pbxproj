@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		6014F90E16D0800B007B14EF /* FingerNoteProgram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6014F90C16D0800B007B14EF /* FingerNoteProgram.cpp */; };
 		6014F90F16D0800B007B14EF /* FingerNoteProgram.h in Headers */ = {isa = PBXBuildFile; fileRef = 6014F90D16D0800B007B14EF /* FingerNoteProgram.h */; };
+		6044028B16D1392D00B5C7DF /* Python.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6044028A16D1392D00B5C7DF /* Python.framework */; };
+		6044029016D13C7B00B5C7DF /* demo.py in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6044028F16D13BF500B5C7DF /* demo.py */; };
+		6044029316D13CFE00B5C7DF /* __init__.py in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6044029216D13CF400B5C7DF /* __init__.py */; };
 		C31B003C1675A5A100383230 /* libLeap.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C31B003B1675A5A100383230 /* libLeap.dylib */; };
 		C3249770167D3B120093F7B8 /* leapmidi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C3249767167D3A100093F7B8 /* leapmidi.a */; };
 		C3249773167D3B730093F7B8 /* libLeap.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = C31B003B1675A5A100383230 /* libLeap.dylib */; };
@@ -74,6 +77,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		6044028D16D13B8600B5C7DF /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = programs;
+			dstSubfolderSpec = 16;
+			files = (
+				6044029316D13CFE00B5C7DF /* __init__.py in CopyFiles */,
+				6044029016D13C7B00B5C7DF /* demo.py in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C3F81432166A08170039AB7E /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 12;
@@ -89,6 +103,9 @@
 /* Begin PBXFileReference section */
 		6014F90C16D0800B007B14EF /* FingerNoteProgram.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FingerNoteProgram.cpp; sourceTree = "<group>"; };
 		6014F90D16D0800B007B14EF /* FingerNoteProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FingerNoteProgram.h; sourceTree = "<group>"; };
+		6044028A16D1392D00B5C7DF /* Python.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Python.framework; path = System/Library/Frameworks/Python.framework; sourceTree = SDKROOT; };
+		6044028F16D13BF500B5C7DF /* demo.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; name = demo.py; path = LeapMIDIX/python/demo.py; sourceTree = "<group>"; };
+		6044029216D13CF400B5C7DF /* __init__.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; name = __init__.py; path = LeapMIDIX/python/__init__.py; sourceTree = "<group>"; };
 		C31B003B1675A5A100383230 /* libLeap.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libLeap.dylib; path = ../../../../Leap_SDK/lib/libLeap.dylib; sourceTree = "<group>"; };
 		C324975D167D3A100093F7B8 /* leapmidi.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = leapmidi.xcodeproj; path = ../leapmidi/leapmidi.xcodeproj; sourceTree = "<group>"; };
 		C33FEF5D166AAECD006BFE81 /* controls.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = controls.cpp; sourceTree = "<group>"; };
@@ -373,6 +390,7 @@
 				C3882469166AB20E007FE3B3 /* IOKit.framework in Frameworks */,
 				C3882461166AB1CE007FE3B3 /* OpenGL.framework in Frameworks */,
 				C3F81445166A08A10039AB7E /* CoreMIDI.framework in Frameworks */,
+				6044028B16D1392D00B5C7DF /* Python.framework in Frameworks */,
 				C33FF061166AAECE006BFE81 /* libGLEW.a in Frameworks */,
 				C33FF062166AAECE006BFE81 /* libglfw.a in Frameworks */,
 				C31B003C1675A5A100383230 /* libLeap.dylib in Frameworks */,
@@ -382,6 +400,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6044028E16D13BB300B5C7DF /* PythonPrograms */ = {
+			isa = PBXGroup;
+			children = (
+				6044028F16D13BF500B5C7DF /* demo.py */,
+				6044029216D13CF400B5C7DF /* __init__.py */,
+			);
+			name = PythonPrograms;
+			sourceTree = "<group>";
+		};
 		C324975E167D3A100093F7B8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -730,6 +757,7 @@
 		C3882476166AB48E007FE3B3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6044028A16D1392D00B5C7DF /* Python.framework */,
 				C3882472166AB44F007FE3B3 /* ApplicationServices.framework */,
 				C3882470166AB449007FE3B3 /* Foundation.framework */,
 				C388246E166AB43B007FE3B3 /* libSystem.B.dylib */,
@@ -756,6 +784,7 @@
 				C33FEF5B166AAECD006BFE81 /* contrib */,
 				C3882476166AB48E007FE3B3 /* Frameworks */,
 				C3F81437166A08170039AB7E /* LeapMIDIX */,
+				6044028E16D13BB300B5C7DF /* PythonPrograms */,
 				C3F81435166A08170039AB7E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -821,6 +850,7 @@
 				C3F81431166A08170039AB7E /* Frameworks */,
 				C3F81432166A08170039AB7E /* CopyFiles */,
 				C3882433166AAFA6007FE3B3 /* Headers */,
+				6044028D16D13B8600B5C7DF /* CopyFiles */,
 			);
 			buildRules = (
 			);
